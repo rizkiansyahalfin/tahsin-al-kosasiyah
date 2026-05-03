@@ -1,0 +1,36 @@
+---
+import LandingPage from '../components/LandingPage';
+import '../styles/global.css';
+---
+
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tahsin Al Kosasiyah Yapidsa - Bimbingan Tahsin Al-Qur'an Metode Utsmani</title>
+		<meta name="description" content="Tempat Ngaji Qur'an Mudah, Cepat, dan Menyenangkan di Caringin, Bogor. Daftar sekarang untuk Angkatan ke-2 tahun 2026." />
+	</head>
+	<body>
+		<LandingPage client:load />
+	</body>
+</html>
+
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+	
+	:root {
+		--font-sans: 'Inter', sans-serif;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		margin: 0;
+		padding: 0;
+	}
+</style>
