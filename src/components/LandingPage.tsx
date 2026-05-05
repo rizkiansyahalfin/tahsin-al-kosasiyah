@@ -6,10 +6,11 @@ import {
   Users, Sparkles, BookMarked, MessageCircle, ChevronRight,
   GraduationCap, Award, PlayCircle
 } from 'lucide-react';
+import Lightbox from './ui/Lightbox';
 
 // --- Constants & Data ---
 const WA_NUMBER = "6285697060001";
-const WA_MESSAGE = encodeURIComponent("Assalamu'alaikum, saya ingin mendaftar Bimbingan Tahsin Al-Qur'an Al Kosasiyah Yapidsa.");
+const WA_MESSAGE = encodeURIComponent("Assalamu'alaikum, saya ingin mendaftar Bimbingan Tahsin Al-Qur'an Al Kosasiyah YAPIDSA.");
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -56,9 +57,7 @@ const schedules = [
 
 const networks = [
   { name: "Pusat Al Utsmani", handle: "@alutsmani" },
-  { name: "Cabang Jatiasih", handle: "@alutsmanijatiasih" },
-  { name: "Cabang Tamansari Bogor", handle: "@alutsmanibogortamansari" },
-  { name: "PTQ Megamendung", handle: "@ptqalutsmanimegamendung" }
+  { name: "Cabang Dukuh", handle: "@alutsmani_dukuh" }
 ];
 
 const mainActivities = [
@@ -109,6 +108,7 @@ export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showAllActivities, setShowAllActivities] = useState(false);
   const [profilImageIndex, setProfilImageIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const displayedActivities = showAllActivities ? allActivities : mainActivities;
 
@@ -134,12 +134,17 @@ export default function LandingPage() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-16 h-16 bg-white rounded-full p-1 shadow-sm flex items-center justify-center shrink-0">
-              <img src="/images/logo/logo-tahsin.png" alt="Logo Tahsin Yapidsa" className="w-full h-full object-contain rounded-full" />
+            <div className="w-14 h-14 bg-white rounded-full p-1 shadow-sm flex items-center justify-center shrink-0">
+              <img src="/images/logo/logo-tahsin.png" alt="Logo Tahsin YAPIDSA" className="w-full h-full object-contain rounded-full" />
             </div>
-            <div className={`font-bold text-lg leading-tight ${isScrolled ? 'text-teal-900' : 'text-white'}`}>
+            
+            <div className={`font-bold text-lg leading-tight text-center ${isScrolled ? 'text-teal-900' : 'text-white'}`}>
               <span className="block">Al Kosasiyah</span>
               <span className="block text-xs font-medium opacity-80">YAPIDSA</span>
+            </div>
+
+            <div className="w-14 h-14 bg-white rounded-full p-1 shadow-sm flex items-center justify-center shrink-0">
+              <img src="/images/logo/logo-yayasan.jpeg" alt="Logo Yayasan YAPIDSA" className="w-full h-full object-cover rounded-full" />
             </div>
           </div>
 
@@ -153,7 +158,7 @@ export default function LandingPage() {
             </a>
           </div>
 
-          <button id="mobile-menu-open" name="mobile-menu-open" type="button" aria-label="Buka Menu Navigasi" className={`md:hidden p-2 rounded-lg ${isScrolled ? 'text-slate-800' : 'text-white'}`} onClick={() => setMobileMenuOpen(true)}>
+          <button id="mobile-menu-open" name="mobile-menu-open" type="button" aria-expanded={mobileMenuOpen} aria-label="Buka Menu Navigasi" className={`md:hidden p-2 rounded-lg ${isScrolled ? 'text-slate-800' : 'text-white'}`} onClick={() => setMobileMenuOpen(true)}>
             <Menu className="w-6 h-6" />
           </button>
         </div>
@@ -204,7 +209,7 @@ export default function LandingPage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-3xl mx-auto">
             <motion.div variants={fadeUp} className="inline-flex flex-col sm:flex-row items-center gap-2 mb-6">
               <span className="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide backdrop-blur-sm">
-                Penerimaan Santri Baru Angkatan Ke-2
+                Penerimaan Santri Baru Tahun Ajaran 2026-2027
               </span>
               <span className="bg-white/10 text-white border border-white/20 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide backdrop-blur-sm flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-amber-300" /> Daftar Gratis 2026
@@ -249,7 +254,7 @@ export default function LandingPage() {
             </div>
             <div>
               <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Mulai Belajar</p>
-              <p className="text-2xl font-extrabold text-slate-800">12 Januari 2026</p>
+              <p className="text-2xl font-extrabold text-slate-800">15 Juli 2026</p>
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-slate-200"></div>
@@ -298,17 +303,17 @@ export default function LandingPage() {
               className="order-1 lg:order-2"
             >
               <motion.span variants={fadeUp} className="text-amber-500 font-bold tracking-wider uppercase text-sm mb-4 block">
-                Keunggulan Kami
+                Keunggulan & Metode
               </motion.span>
               <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-extrabold text-teal-950 mb-6 leading-tight">
-                Menggunakan <span className="text-teal-600">Metode Utsmani</span> yang Sistematis
+                Metode Pembelajaran <span className="text-teal-600">Al Utsmani</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Metode Utsmani dirancang khusus agar proses belajar membaca Al-Qur'an menjadi pengalaman yang menyenangkan, mudah dipahami, dan cepat dikuasai oleh semua kalangan usia.
+                Metode Utsmani dirancang khusus agar proses belajar membaca Al-Qur'an menjadi pengalaman yang menyenangkan, mudah dipahami, dan cepat dikuasai. Kami memiliki program spesifik yaitu <strong>Utsmani Anak</strong> dan <strong>Utsmani Dewasa</strong> yang disesuaikan dengan kebutuhan setiap usia.
               </motion.p>
               
-              <div className="space-y-4">
-                {['Mudah dipelajari untuk pemula', 'Cepat menguasai tajwid dasar', 'Menyenangkan dengan pengajar kompeten', 'Sistem berjenjang yang jelas'].map((item, i) => (
+              <div className="space-y-4 mb-8">
+                {['Mudah dipelajari untuk pemula', 'Cepat menguasai tajwid dasar', 'Tersedia buku panduan khusus Anak dan Dewasa', 'Sistem berjenjang yang jelas (Mustawa)'].map((item, i) => (
                   <motion.div variants={fadeUp} key={i} className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                     <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center shrink-0">
                       <CheckCircle className="w-5 h-5 text-teal-600" />
@@ -318,6 +323,76 @@ export default function LandingPage() {
                 ))}
               </div>
             </motion.div>
+          </div>
+
+          {/* Buku Panduan */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Buku Panduan Metode Utsmani</h3>
+              <p className="text-slate-600 max-w-2xl mx-auto">Kami menggunakan buku panduan resmi dari pusat Al Utsmani yang terbagi untuk kelas anak dan dewasa (Jilid 1-3).</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-3xl p-6 shadow-lg shadow-teal-900/5 border border-slate-100 flex flex-col items-center group hover:shadow-xl transition-all"
+              >
+                <div className="w-full h-80 rounded-2xl overflow-hidden mb-6 bg-slate-50 flex items-center justify-center p-4">
+                  <img src="/images/buku/buku-utsmani-anak.jpeg" alt="Buku Utsmani Anak Jilid 1-3" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl" />
+                </div>
+                <h4 className="font-bold text-xl text-teal-900 mb-2">Buku Utsmani Anak</h4>
+                <p className="text-slate-500 text-center">Jilid 1 - 3</p>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-white rounded-3xl p-6 shadow-lg shadow-teal-900/5 border border-slate-100 flex flex-col items-center group hover:shadow-xl transition-all"
+              >
+                <div className="w-full h-80 rounded-2xl overflow-hidden mb-6 bg-slate-50 flex items-center justify-center p-4">
+                  <img src="/images/buku/buku-utsmani-dewasa.jpeg" alt="Buku Utsmani Dewasa Jilid 1-3" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl" />
+                </div>
+                <h4 className="font-bold text-xl text-teal-900 mb-2">Buku Utsmani Dewasa</h4>
+                <p className="text-slate-500 text-center">Jilid 1 - 3</p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Tahapan Kelas (Mustawa) */}
+          <div className="mt-24 pt-16 border-t border-slate-200 relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-50 px-6">
+              <Award className="w-10 h-10 text-amber-500" />
+            </div>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Tahapan Kelas (Mustawa)</h3>
+              <p className="text-slate-600 max-w-2xl mx-auto">Sistem pembelajaran berjenjang untuk memastikan penguasaan materi yang optimal dari dasar hingga mahir.</p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+              {[
+                { name: "Mustawa I'dad", color: "bg-teal-50 text-teal-700 border-teal-200" },
+                { name: "Mustawa 1", color: "bg-white text-slate-700 border-slate-200" },
+                { name: "Mustawa 2", color: "bg-white text-slate-700 border-slate-200" },
+                { name: "Mustawa 3", color: "bg-white text-slate-700 border-slate-200" },
+                { name: "Mustawa 4", color: "bg-white text-slate-700 border-slate-200" },
+                { name: "Mustawa 5", color: "bg-white text-slate-700 border-slate-200" },
+                { name: "Mustawa Talaqqi", color: "bg-amber-50 text-amber-700 border-amber-200" }
+              ].map((mustawa, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`px-6 py-4 rounded-2xl border-2 font-bold shadow-sm ${mustawa.color} flex items-center gap-3`}
+                >
+                  <span className="w-6 h-6 rounded-full bg-white/50 flex items-center justify-center text-sm">{i+1}</span>
+                  {mustawa.name}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -339,20 +414,20 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-6 shadow-lg shadow-slate-100 border border-slate-100 hover:shadow-xl hover:border-teal-100 transition-all group"
+                className="bg-white rounded-3xl p-6 shadow-lg shadow-slate-100 border border-slate-100 hover:shadow-xl hover:border-teal-100 transition-all group flex flex-col items-center text-center"
               >
                 <div className={`w-14 h-14 rounded-2xl ${schedule.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   {schedule.icon}
                 </div>
-                <h3 className="font-bold text-xl text-slate-800 mb-4 h-14">{schedule.age}</h3>
+                <h3 className="font-bold text-xl text-slate-800 mb-4 h-14 flex items-center justify-center">{schedule.age}</h3>
                 <div className="w-full h-px bg-slate-100 mb-5"></div>
-                <div className="space-y-4">
+                <div className="space-y-4 w-full">
                   {schedule.options.map((opt, i) => (
-                    <div key={i} className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                    <div key={i} className="flex flex-col items-center gap-1">
+                      <div className="flex items-center justify-center gap-2 text-slate-700 font-semibold">
                         <Calendar className="w-4 h-4 text-amber-500" /> {opt.days}
                       </div>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm ml-6">
+                      <div className="flex items-center justify-center gap-2 text-slate-500 text-sm">
                         <Clock className="w-4 h-4" /> {opt.time}
                       </div>
                     </div>
@@ -382,10 +457,11 @@ export default function LandingPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: (index % 4) * 0.1 }}
+                  onClick={() => setSelectedImage(item.image)}
                   className="group relative rounded-3xl overflow-hidden shadow-md cursor-pointer h-80"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-900/40 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform">
                     <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-3">
                       {item.icon}
@@ -432,20 +508,33 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 className="text-white"
               >
-                <span className="text-amber-400 font-bold tracking-wider uppercase text-sm mb-4 block">Profil Pengajar Utama</span>
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Dida Nursida, <span className="text-teal-300 text-2xl md:text-4xl block mt-2">S.Pd.I., M.Pd.</span></h2>
-                <p className="text-teal-50/80 text-lg mb-8 leading-relaxed max-w-md">
-                  Berpengalaman dalam membimbing bacaan Al-Qur'an dengan sabar dan metode yang terstruktur, memastikan setiap santri mendapatkan perhatian penuh.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="https://instagram.com/dida_nursida" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3 rounded-full transition-colors backdrop-blur-sm">
-                    <Instagram className="w-5 h-5 text-pink-400" />
-                    <span className="font-semibold">@dida_nursida</span>
-                  </a>
-                  <a href="#" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3 rounded-full transition-colors backdrop-blur-sm">
-                    <TikTokIcon className="w-5 h-5 text-white" />
-                    <span className="font-semibold">Dida Nursida Yapidsa</span>
-                  </a>
+                <span className="text-amber-400 font-bold tracking-wider uppercase text-sm mb-4 block">Tentang YAPIDSA</span>
+                <h2 className="text-3xl md:text-5xl font-extrabold mb-6">Yayasan Persaudaraan Islam Darussalam</h2>
+                
+                <div className="bg-white/10 border border-white/20 p-6 rounded-3xl mb-8 backdrop-blur-sm">
+                  <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                    <div className="w-48 md:w-56 rounded-2xl overflow-hidden shrink-0 border-4 border-teal-700 bg-white flex items-center justify-center p-2">
+                      <img src="/images/profil/tahun-berdiri.jpeg" alt="Tahun Berdiri YAPIDSA" className="w-full h-auto object-contain rounded-xl" />
+                    </div>
+                    <div>
+                      <p className="text-teal-50/90 text-lg leading-relaxed">
+                        Yayasan Persaudaraan Islam Darussalam (YAPIDSA) telah mendedikasikan diri untuk membina generasi qur'ani yang unggul. Di bawah naungan yayasan ini, Bimbingan Tahsin Al-Qur'an Al Kosasiyah hadir untuk masyarakat luas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/20 pt-6 mt-6">
+                  <span className="text-teal-300 font-bold uppercase text-sm mb-2 block">Profil Pengajar Utama</span>
+                  <h3 className="text-2xl font-bold mb-2">Dida Nursida, S.Pd.I., M.Pd.</h3>
+                  <p className="text-teal-50/80 mb-6">Berpengalaman dalam membimbing bacaan Al-Qur'an dengan sabar dan metode yang terstruktur.</p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a href="https://instagram.com/dida_nursida" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3 rounded-full transition-colors backdrop-blur-sm">
+                      <Instagram className="w-5 h-5 text-pink-400" />
+                      <span className="font-semibold">@dida_nursida</span>
+                    </a>
+                  </div>
                 </div>
               </motion.div>
               
@@ -453,7 +542,7 @@ export default function LandingPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="flex justify-center md:justify-end"
+                className="flex justify-center md:justify-end mt-10 md:mt-0"
               >
                 <div className="w-64 h-64 md:w-80 md:h-80 relative">
                   <div className="absolute inset-0 border-2 border-amber-400/50 rounded-full translate-x-4 translate-y-4"></div>
@@ -477,6 +566,42 @@ export default function LandingPage() {
                   </div>
                 </div>
               </motion.div>
+            </div>
+          </div>
+
+          {/* Perjalanan Belajar */}
+          <div className="mt-20 border-t border-slate-200 pt-16">
+            <div className="text-center mb-10">
+              <span className="text-amber-500 font-bold tracking-wider uppercase text-sm mb-2 block">Dokumentasi Pengajar</span>
+              <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Perjalanan Belajar Tahsin</h3>
+              <p className="text-slate-600 max-w-2xl mx-auto">Dedikasi dan semangat belajar pengajar utama dalam memperdalam ilmu bacaan Al-Qur'an secara offline maupun online.</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                { image: '/images/perjalanan/offline-1.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/offline-2.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/offline-3.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/offline-4.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/offline-5.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/offline-6.jpeg', type: 'Offline' },
+                { image: '/images/perjalanan/online-1.jpeg', type: 'Online' },
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => setSelectedImage(item.image)}
+                  className="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all h-48 md:h-64 bg-slate-100 cursor-pointer"
+                >
+                  <img src={item.image} alt={`Perjalanan Belajar ${item.type}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-teal-800 shadow-sm border border-slate-100">
+                    {item.type}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
@@ -518,13 +643,18 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-12 gap-12 lg:gap-8">
             <div className="md:col-span-5 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
-                <div className="w-20 h-20 bg-white rounded-full p-1.5 flex items-center justify-center shrink-0">
-                  <img src="/images/logo/logo-tahsin.png" alt="Logo Tahsin Yapidsa" className="w-full h-full object-contain rounded-full" />
+              <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-white rounded-full p-1.5 flex items-center justify-center shrink-0">
+                  <img src="/images/logo/logo-tahsin.png" alt="Logo Tahsin YAPIDSA" className="w-full h-full object-contain rounded-full" />
                 </div>
-                <div className="font-bold text-xl text-white leading-tight text-left">
+                
+                <div className="font-bold text-xl text-white leading-tight text-center">
                   <span className="block">Al Kosasiyah</span>
                   <span className="block text-sm font-medium text-teal-400">YAPIDSA</span>
+                </div>
+
+                <div className="w-16 h-16 bg-white rounded-full p-1.5 flex items-center justify-center shrink-0">
+                  <img src="/images/logo/logo-yayasan.jpeg" alt="Logo Yayasan YAPIDSA" className="w-full h-full object-cover rounded-full" />
                 </div>
               </div>
               <p className="text-slate-400 mb-8 max-w-sm mx-auto md:mx-0 leading-relaxed">
@@ -540,6 +670,18 @@ export default function LandingPage() {
                   RT 06/07 Ds. Ciderum,<br/>
                   Kec. Caringin, Kab. Bogor.
                 </p>
+                <div className="w-full max-w-sm h-48 rounded-xl overflow-hidden border border-slate-700/50 mb-4 bg-slate-800">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.776633390885!2d106.8442357750868!3d-6.693984593301032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c9006a5f7031%3A0x7051673b406a4562!2sTAHSIN%20AL-QUR'AN%20AL%20KOSASIYAH%20YAPIDSA!5e0!3m2!1sen!2sid!4v1714479532185!5m2!1sen!2sid" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen={false} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Lokasi Tahsin Al Kosasiyah"
+                  ></iframe>
+                </div>
                 <a href="https://www.google.com/maps/place/TAHSIN+AL-QUR'AN+AL+KOSASIYAH+YAPIDSA/@-6.6939899,106.8468107,726m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e69c9006a5f7031:0x7051673b406a4562!8m2!3d-6.6939899!4d106.8468107!16s%2Fg%2F11n4v_nfrp?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center md:justify-start gap-2 text-teal-400 hover:text-teal-300 font-semibold transition-colors">
                   Buka di Google Maps <ChevronRight className="w-4 h-4" />
                 </a>
@@ -585,6 +727,8 @@ export default function LandingPage() {
       >
         <MessageCircle className="w-8 h-8" />
       </motion.a>
+      {/* Lightbox for Images */}
+      <Lightbox imageSrc={selectedImage} onClose={() => setSelectedImage(null)} />
     </div>
   );
 }
