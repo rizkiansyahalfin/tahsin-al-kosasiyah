@@ -13,12 +13,6 @@ const WA_NUMBER = "6285697060001";
 const WA_MESSAGE = encodeURIComponent("Assalamu'alaikum, saya ingin mendaftar Bimbingan Tahsin Al-Qur'an Al Kosasiyah YAPIDSA.");
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-  </svg>
-);
-
 const schedules = [
   {
     age: "Usia Kelas 1-6 SD/MI",
@@ -219,12 +213,12 @@ export default function LandingPage() {
             <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
               Yuk Daftar...! <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">
-                Bimbingan Tahsin Al-Qur'an
+                Bimbingan Tahsin Al-Qur&apos;an
               </span>
             </motion.h1>
             
             <motion.p variants={fadeUp} className="text-lg md:text-xl text-teal-50/80 mb-10 leading-relaxed font-light">
-              "Tempat Ngaji Qur'an Mudah, Cepat, dan Menyenangkan." <br className="hidden md:block"/>
+              &quot;Tempat Ngaji Qur&apos;an Mudah, Cepat, dan Menyenangkan.&quot; <br className="hidden md:block"/>
               Diselenggarakan oleh Yayasan Persaudaraan Islam Darussalam (YAPIDSA).
             </motion.p>
             
@@ -291,7 +285,7 @@ export default function LandingPage() {
                   <CheckCircle className="w-6 h-6 text-teal-500" />
                   <span className="font-bold text-slate-800">Terbukti Efektif</span>
                 </div>
-                <p className="text-sm text-slate-500">Ribuan santri telah berhasil membaca Al-Qur'an dengan tartil.</p>
+                <p className="text-sm text-slate-500">Ribuan santri telah berhasil membaca Al-Qur&apos;an dengan tartil.</p>
               </div>
             </motion.div>
 
@@ -309,7 +303,7 @@ export default function LandingPage() {
                 Metode Pembelajaran <span className="text-teal-600">Al Utsmani</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Metode Utsmani dirancang khusus agar proses belajar membaca Al-Qur'an menjadi pengalaman yang menyenangkan, mudah dipahami, dan cepat dikuasai. Kami memiliki program spesifik yaitu <strong>Utsmani Anak</strong> dan <strong>Utsmani Dewasa</strong> yang disesuaikan dengan kebutuhan setiap usia.
+                Metode Utsmani dirancang khusus agar proses belajar membaca Al-Qur&apos;an menjadi pengalaman yang menyenangkan, mudah dipahami, dan cepat dikuasai. Kami memiliki program spesifik yaitu <strong>Utsmani Anak</strong> dan <strong>Utsmani Dewasa</strong> yang disesuaikan dengan kebutuhan setiap usia.
               </motion.p>
               
               <div className="space-y-4 mb-8">
@@ -445,7 +439,7 @@ export default function LandingPage() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-teal-600 font-bold tracking-wider uppercase text-sm mb-2 block">Dokumentasi</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-teal-950 mb-4">Kegiatan Al Kosasiyah</h2>
-            <p className="text-slate-600 text-lg">Potret semangat belajar santri Bimbingan Tahsin Al-Qur'an YAPIDSA.</p>
+            <p className="text-slate-600 text-lg">Potret semangat belajar santri Bimbingan Tahsin Al-Qur&apos;an YAPIDSA.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -518,7 +512,7 @@ export default function LandingPage() {
                     </div>
                     <div>
                       <p className="text-teal-50/90 text-lg leading-relaxed">
-                        Yayasan Persaudaraan Islam Darussalam (YAPIDSA) telah mendedikasikan diri untuk membina generasi qur'ani yang unggul. Di bawah naungan yayasan ini, Bimbingan Tahsin Al-Qur'an Al Kosasiyah hadir untuk masyarakat luas.
+                        Yayasan Persaudaraan Islam Darussalam (YAPIDSA) telah mendedikasikan diri untuk membina generasi qur&apos;ani yang unggul. Di bawah naungan yayasan ini, Bimbingan Tahsin Al-Qur&apos;an Al Kosasiyah hadir untuk masyarakat luas.
                       </p>
                     </div>
                   </div>
@@ -527,7 +521,7 @@ export default function LandingPage() {
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <span className="text-teal-300 font-bold uppercase text-sm mb-2 block">Profil Pengajar Utama</span>
                   <h3 className="text-2xl font-bold mb-2">Dida Nursida, S.Pd.I., M.Pd.</h3>
-                  <p className="text-teal-50/80 mb-6">Berpengalaman dalam membimbing bacaan Al-Qur'an dengan sabar dan metode yang terstruktur.</p>
+                  <p className="text-teal-50/80 mb-6">Berpengalaman dalam membimbing bacaan Al-Qur&apos;an dengan sabar dan metode yang terstruktur.</p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a href="https://instagram.com/dida_nursida" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-3 rounded-full transition-colors backdrop-blur-sm">
@@ -574,7 +568,7 @@ export default function LandingPage() {
             <div className="text-center mb-10">
               <span className="text-amber-500 font-bold tracking-wider uppercase text-sm mb-2 block">Dokumentasi Pengajar</span>
               <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Perjalanan Belajar Tahsin</h3>
-              <p className="text-slate-600 max-w-2xl mx-auto">Dedikasi dan semangat belajar pengajar utama dalam memperdalam ilmu bacaan Al-Qur'an secara offline maupun online.</p>
+              <p className="text-slate-600 max-w-2xl mx-auto">Dedikasi dan semangat belajar pengajar utama dalam memperdalam ilmu bacaan Al-Qur&apos;an secara offline maupun online.</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -658,7 +652,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <p className="text-slate-400 mb-8 max-w-sm mx-auto md:mx-0 leading-relaxed">
-                Menyediakan bimbingan membaca Al-Qur'an dengan metode Utsmani yang terbukti mudah, cepat, dan menyenangkan untuk segala usia.
+                Menyediakan bimbingan membaca Al-Qur&apos;an dengan metode Utsmani yang terbukti mudah, cepat, dan menyenangkan untuk segala usia.
               </p>
             </div>
             
