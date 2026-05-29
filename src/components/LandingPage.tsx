@@ -77,13 +77,41 @@ const mainActivities = [
   }
 ];
 
-const otherActivities = [1, 2, 3, 4, 7, 8, 10, 11, 12, 14].map(num => ({
+const otherActivities = [1, 2, 3, 4, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].map(num => ({
   title: "Dokumentasi Kegiatan",
   image: `/images/kegiatan/kegiatan-${num}.jpeg`,
   icon: <Sparkles className="w-5 h-5" />
 }));
 
-const allActivities = [...mainActivities, ...otherActivities];
+const maulidActivities = [1, 2, 3, 4].map(num => ({
+  title: "Maulid Nabi Muhammad SAW",
+  image: `/images/kegiatan/maulid-nabi-${num}.jpeg`,
+  icon: <Sparkles className="w-5 h-5" />
+}));
+
+const musolaActivities = [
+  {
+    title: "Musola Tempat Belajar Tahsin",
+    image: "/images/kegiatan/musola-tahsin.jpeg",
+    icon: <Sparkles className="w-5 h-5" />
+  }
+];
+
+const ppdbActivities = [1, 2].map(num => ({
+  title: "PPDB (Penerimaan Peserta Didik Baru)",
+  image: `/images/kegiatan/ppdb-${num}.jpeg`,
+  icon: <Sparkles className="w-5 h-5" />
+}));
+
+const posterPpdbActivities = [
+  {
+    title: "Poster PPDB Terbaru",
+    image: "/images/kegiatan/poster-ppdb-terbaru.jpeg",
+    icon: <Sparkles className="w-5 h-5" />
+  }
+];
+
+const allActivities = [...mainActivities, ...otherActivities, ...maulidActivities, ...musolaActivities, ...ppdbActivities, ...posterPpdbActivities];
 
 // --- Animations ---
 const fadeUp = {
@@ -323,9 +351,9 @@ export default function LandingPage() {
           <div className="mt-20">
             <div className="text-center mb-12">
               <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Buku Panduan Metode Utsmani</h3>
-              <p className="text-slate-600 max-w-2xl mx-auto">Kami menggunakan buku panduan resmi dari pusat Al Utsmani yang terbagi untuk kelas anak dan dewasa (Jilid 1-3).</p>
+              <p className="text-slate-600 max-w-2xl mx-auto">Kami menggunakan buku panduan resmi dari pusat Al Utsmani untuk kelas anak, dewasa, dan talaqqi.</p>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -350,6 +378,19 @@ export default function LandingPage() {
                 </div>
                 <h4 className="font-bold text-xl text-teal-900 mb-2">Buku Utsmani Dewasa</h4>
                 <p className="text-slate-500 text-center">Jilid 1 - 3</p>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-3xl p-6 shadow-lg shadow-teal-900/5 border border-slate-100 flex flex-col items-center group hover:shadow-xl transition-all"
+              >
+                <div className="w-full h-80 rounded-2xl overflow-hidden mb-6 bg-slate-50 flex items-center justify-center p-4">
+                  <img src="/images/buku/buku-utsmani-talaqqi.jpeg" alt="Buku Utsmani Talaqqi" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl" />
+                </div>
+                <h4 className="font-bold text-xl text-teal-900 mb-2">Buku Utsmani Talaqqi</h4>
+                <p className="text-slate-500 text-center">Karya KH. Efendi Anwar, Lc., Al Hafizh</p>
               </motion.div>
             </div>
           </div>
@@ -557,6 +598,64 @@ export default function LandingPage() {
                   <div className="absolute top-4 -right-4 bg-white px-4 py-2 rounded-2xl shadow-xl z-20 flex items-center gap-2 border border-slate-100">
                     <Award className="w-5 h-5 text-amber-500" />
                     <span className="font-bold text-slate-800 text-sm">Bersertifikasi</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Musyrif & Musyrifah */}
+          <div className="mt-20 border-t border-slate-200 pt-16">
+            <div className="text-center mb-12">
+              <span className="text-amber-500 font-bold tracking-wider uppercase text-sm mb-2 block">Pembimbing Tahsin</span>
+              <h3 className="text-2xl md:text-3xl font-bold text-teal-950 mb-4">Musyrif & Musyrifah</h3>
+              <p className="text-slate-600 max-w-2xl mx-auto">Para pembimbing yang siap mendampingi dan membimbing santri dalam belajar membaca Al-Qur&apos;an.</p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-teal-50 rounded-[3rem] p-8 lg:p-12 border border-teal-100 shadow-lg"
+              >
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="flex justify-center">
+                    <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl border-4 border-teal-200 bg-white flex items-center justify-center p-1">
+                      <img src="/images/profil/musyrif-musyrifah.jpeg" alt="Musyrif dan Musyrifah Tahsin Al Kosasiyah" className="w-full h-full object-cover rounded-xl" />
+                    </div>
+                  </div>
+                  <div className="text-center md:text-left">
+                    <h4 className="text-xl font-bold text-teal-900 mb-6">Tim Pembimbing Al Kosasiyah</h4>
+                    <ul className="space-y-4">
+                      <li className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-teal-100">
+                        <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+                          <User className="w-5 h-5 text-teal-700" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-800">Ustadz Dwi Wahyu, S.Pd.</p>
+                          <p className="text-sm text-slate-500">Musyrif Tahsin</p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-teal-100">
+                        <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+                          <User className="w-5 h-5 text-teal-700" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-800">Ustadzah Fitria Nursa'ada</p>
+                          <p className="text-sm text-slate-500">Musyrifah Tahsin</p>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-teal-100">
+                        <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+                          <User className="w-5 h-5 text-teal-700" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-800">Ustadzah Putri Ziya Mada Zilfa</p>
+                          <p className="text-sm text-slate-500">Musyrifah Tahsin</p>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </motion.div>
