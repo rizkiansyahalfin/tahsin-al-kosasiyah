@@ -89,29 +89,7 @@ const maulidActivities = [1, 2, 3, 4].map(num => ({
   icon: <Sparkles className="w-5 h-5" />
 }));
 
-const musolaActivities = [
-  {
-    title: "Musola Tempat Belajar Tahsin",
-    image: "/images/kegiatan/musola-tahsin.jpeg",
-    icon: <Sparkles className="w-5 h-5" />
-  }
-];
-
-const ppdbActivities = [1, 2].map(num => ({
-  title: "PPDB (Penerimaan Peserta Didik Baru)",
-  image: `/images/kegiatan/ppdb-${num}.jpeg`,
-  icon: <Sparkles className="w-5 h-5" />
-}));
-
-const posterPpdbActivities = [
-  {
-    title: "Poster PPDB Terbaru",
-    image: "/images/kegiatan/poster-ppdb-terbaru.jpeg",
-    icon: <Sparkles className="w-5 h-5" />
-  }
-];
-
-const allActivities = [...mainActivities, ...otherActivities, ...maulidActivities, ...musolaActivities, ...ppdbActivities, ...posterPpdbActivities];
+const allActivities = [...mainActivities, ...otherActivities, ...maulidActivities];
 
 // --- Animations ---
 const fadeUp = {
@@ -474,6 +452,46 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Poster PPDB */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-950 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/10 backdrop-blur-sm rounded-[3rem] p-8 lg:p-12 border border-white/20 shadow-2xl"
+          >
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="order-2 md:order-1 text-center md:text-left">
+                <span className="text-amber-400 font-bold tracking-wider uppercase text-sm mb-4 block">Promo & Pendaftaran</span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+                  Segera Daftar! <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">PPDB Tahun Ajaran 2026-2027</span>
+                </h2>
+                <p className="text-teal-50/80 text-lg mb-8 leading-relaxed">
+                  Bimbingan Tahsin Al-Qur&apos;an Metode Utsmani. Mudah, Cepat, dan Menyenangkan. Daftarkan diri Anda sekarang juga!
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <a href={WA_LINK} target="_blank" rel="noreferrer" className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-teal-950 rounded-2xl font-bold text-lg shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-2 group transform hover:-translate-y-1">
+                    Daftar Sekarang <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a href="#kegiatan" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl font-semibold text-lg transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
+                    Lihat Dokumentasi
+                  </a>
+                </div>
+              </div>
+              <div className="order-1 md:order-2 flex justify-center">
+                <div className="w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white/5">
+                  <img src="/images/kegiatan/poster-ppdb-terbaru.jpeg" alt="Poster PPDB Tahsin Al Kosasiyah" className="w-full h-auto object-cover" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Gallery / Kegiatan */}
       <section id="kegiatan" className="py-24 bg-slate-50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -525,6 +543,26 @@ export default function LandingPage() {
               <Sparkles className="w-5 h-5" />
               {showAllActivities ? "Tutup Galeri" : "Lihat Dokumentasi Lainnya"}
             </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Fasilitas Belajar */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-teal-600 font-bold tracking-wider uppercase text-sm mb-2 block">Fasilitas</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-teal-950 mb-4">Tempat Belajar yang Nyaman</h2>
+            <p className="text-slate-600 text-lg">Kegiatan belajar mengajar Tahsin Al-Qur&apos;an dilaksanakan di musola yang bersih dan nyaman.</p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200 bg-white"
+          >
+            <img src="/images/kegiatan/musola-tahsin.jpeg" alt="Musola Tempat Belajar Tahsin Al Kosasiyah" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
