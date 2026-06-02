@@ -4,12 +4,12 @@ import {
   BookOpen, Calendar, Clock, MapPin, Phone, Instagram, 
   CheckCircle, ArrowRight, User, Menu, X, 
   Users, Sparkles, BookMarked, MessageCircle, ChevronRight,
-  GraduationCap, Award, PlayCircle
+  GraduationCap, Award, PlayCircle, DollarSign, Gift
 } from 'lucide-react';
 import Lightbox from './ui/Lightbox';
 
 // --- Constants & Data ---
-const WA_NUMBER = "6285697060001";
+const WA_NUMBER = "6285772192024";
 const WA_MESSAGE = encodeURIComponent("Assalamu'alaikum, saya ingin mendaftar Bimbingan Tahsin Al-Qur'an Al Kosasiyah YAPIDSA.");
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
@@ -240,35 +240,35 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Highlight/Pricing Banner */}
-      <section className="relative -mt-12 z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-3xl p-6 lg:p-10 shadow-2xl shadow-teal-900/10 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8"
-        >
-          <div className="flex items-center gap-5 w-full md:w-auto">
-            <div className="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center shrink-0">
-              <Calendar className="w-8 h-8 text-teal-600" />
-            </div>
-            <div>
-              <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Mulai Belajar</p>
-              <p className="text-2xl font-extrabold text-slate-800">15 Juli 2026</p>
-            </div>
-          </div>
-          <div className="hidden md:block w-px h-16 bg-slate-200"></div>
-          <div className="flex items-center gap-5 w-full md:w-auto bg-amber-50 p-4 rounded-2xl border border-amber-100 md:border-none md:bg-transparent md:p-0">
-            <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center shrink-0">
-              <BookMarked className="w-8 h-8 text-amber-600" />
-            </div>
-            <div>
-              <p className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-1">Infaq Sangat Terjangkau</p>
-              <p className="text-3xl font-extrabold text-slate-800">Rp 25.000 <span className="text-lg font-medium text-slate-500">/ bulan</span></p>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+       {/* Highlight/Pricing Banner */}
+       <section className="relative -mt-12 z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+         <motion.div 
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="bg-white rounded-3xl p-6 lg:p-10 shadow-2xl shadow-teal-900/10 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8"
+         >
+           <div className="flex items-center gap-5 w-full md:w-auto">
+             <div className="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center shrink-0">
+               <DollarSign className="w-8 h-8 text-teal-600" />
+             </div>
+             <div>
+               <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Uang Pendaftaran</p>
+               <p className="text-2xl font-extrabold text-slate-800">Rp 50.000</p>
+             </div>
+           </div>
+           <div className="hidden md:block w-px h-16 bg-slate-200"></div>
+           <div className="flex items-center gap-5 w-full md:w-auto bg-amber-50 p-4 rounded-2xl border border-amber-100 md:border-none md:bg-transparent md:p-0">
+             <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center shrink-0">
+               <Gift className="w-8 h-8 text-amber-600" />
+             </div>
+             <div>
+               <p className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-1">Infaq Bulanan</p>
+               <p className="text-3xl font-extrabold text-slate-800">Rp 35.000 <span className="text-lg font-medium text-slate-500">/ bulan</span></p>
+             </div>
+           </div>
+         </motion.div>
+       </section>
 
       {/* About Program / Metode */}
       <section id="program" className="py-24 bg-slate-50">
@@ -823,8 +823,8 @@ export default function LandingPage() {
                 <ul className="space-y-4 w-full flex flex-col items-center md:items-start">
                   <li>
                     <a href={WA_LINK} target="_blank" rel="noreferrer" className="flex items-center justify-center md:justify-start gap-3 text-slate-400 hover:text-white transition-colors">
-                      <MessageCircle className="w-5 h-5 text-green-500" /> WhatsApp: 0856-9706-0001
-                    </a>
+                       <MessageCircle className="w-5 h-5 text-green-500" /> WhatsApp: 085772192024
+                     </a>
                   </li>
                   <li>
                     <a href="https://instagram.com/dida_nursida" target="_blank" rel="noreferrer" className="flex items-center justify-center md:justify-start gap-3 text-slate-400 hover:text-white transition-colors">
